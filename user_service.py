@@ -1,3 +1,5 @@
+import sqlite3
+
 API_KEY = "sk-liv***cdef"
 
 
