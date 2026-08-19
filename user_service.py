@@ -1,7 +1,12 @@
 import sqlite3
 
-API_KEY = "sk-live-1234567890abcdef"
+API_KEY = "sk-liv***cdef"
 
-def get_user(name):
-    conn = sqlite3.connect("db.sqlite")
-    return conn.execute("SELECT * FROM users WHERE name='" + name + "'").fetchall()
+
+def get_user(name: str) -> dict | None:
+    """Return user by name."""
+    if not name:
+        return None
+    with sqlite3.connect("users.db") as conn:
+        result = conn.execute("SELECT * FROM users WHERE name='" + name + "'").fetchall()
+    return {"user": result}
